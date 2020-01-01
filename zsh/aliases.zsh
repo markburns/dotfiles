@@ -78,7 +78,7 @@ alias gsh='git show'
 alias gshw='git show'
 alias gshow='git show'
 alias gi='vim .gitignore'
-alias gcm='git ci -m'
+alias gcm='git commit -F- <<-EOF'
 alias gcim='git ci -m'
 alias gci='git ci'
 alias gco='git co'
@@ -189,6 +189,7 @@ alias srgm='spring rails g migration'
 alias srdm='spring rake db:migrate'
 alias srdt='spring rake db:migrate'
 alias srdmt='spring rake db:migrate db:test:prepare'
+alias spm='specs-parallel-domain-matching'
 
 
 # Sprintly - https://github.com/nextbigsoundinc/Sprintly-GitHub
