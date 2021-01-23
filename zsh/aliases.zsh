@@ -86,13 +86,31 @@ alias gsh='git show'
 alias gshw='git show'
 alias gshow='git show'
 alias gi='vim .gitignore'
-alias gcm='git commit -F- <<-EOF'
+alias gcane='git commit --amend --no-edit'
+alias gc="git commit "
+# set in YADR's zsh/prezto/modules/git/alias.zsh
+# overridden by flow/bin/gcm
+unalias gcm || echo ''
+
+
+alias A1="awk '{print \$1}'"
+alias A2="awk '{print \$2}'"
+alias A3="awk '{print \$3}'"
+alias A4="awk '{print \$4}'"
+alias A5="awk '{print \$5}'"
+alias A6="awk '{print \$6}'"
+alias A7="awk '{print \$7}'"
+alias A8="awk '{print \$8}'"
+alias A9="awk '{print \$9}'"
+
+
 alias gcim='git ci -m'
 alias gci='git ci'
 alias gco='git co'
 alias gcp='git cp'
 alias ga='git add -A'
-alias gap='git add -p'
+alias gan='git add -N .; git add -A'
+alias gap='git add -N .; git add -p'
 alias guns='git unstage'
 alias gunc='git uncommit'
 alias gm='git merge'
@@ -103,10 +121,9 @@ alias grr='git remote rm'
 alias grad='git remote add'
 alias gr='git rebase'
 alias gra='git rebase --abort'
-alias ggrc='git rebase --continue'
+alias grc='git add . && git rebase --continue || git rebase --skip'
 alias gbi='git rebase --interactive'
-alias gl='git l'
-alias glg='git l'
+alias gl='git log --topo-order --pretty=format:"${_git_log_medium_format}"'
 alias glog='git l'
 alias co='git co'
 alias gf='git fetch'
@@ -115,15 +132,15 @@ alias gfa='git fetch --all'
 alias gfap='git fetch --all --prune'
 alias gfch='git fetch'
 alias gd='git diff'
-alias gb='git b'
+alias gb='flow-git-branch'
 # Staged and cached are the same thing
 alias gdc='git diff --cached -w'
 alias gds='git diff --staged -w'
 alias gpub='grb publish'
 alias gtr='grb track'
-alias gpl='git pull'
+alias gpl='git pull --rebase'
 alias gplr='git pull --rebase'
-alias gps='git push'
+alias gps='git push --force-with-lease || git push --set-upstream origin $(current-branch) --force-with-lease'
 alias gpsh='git push -u origin `git rev-parse --abbrev-ref HEAD`'
 alias gnb='git nb' # new branch aka checkout -b
 alias grs='git reset'
@@ -138,6 +155,8 @@ alias gt='git t'
 alias gbg='git bisect good'
 alias gbb='git bisect bad'
 alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+# git update
+alias gu='gco develop && git pull --rebase && git checkout - && git rebase develop'
 
 # Common shell functions
 alias less='less -r'
@@ -172,6 +191,7 @@ alias sgi='sudo gem install --no-ri --no-rdoc'
 # This uses NValt (NotationalVelocity alt fork) - http://brettterpstra.com/project/nvalt/
 # to find the note called 'todo'
 alias todo='open nvalt://find/todo'
+alias open='launchy'
 
 # Forward port 80 to 3000
 alias portforward='sudo ipfw add 1000 forward 127.0.0.1,3000 ip from any to any 80 in'
@@ -197,13 +217,9 @@ alias srgm='spring rails g migration'
 alias srdm='spring rake db:migrate'
 alias srdt='spring rake db:migrate'
 alias srdmt='spring rake db:migrate db:test:prepare'
-alias spm='specs-parallel-domain-matching'
+alias spm='specs-parallel-matching'
+alias sp='spring parallel_rspec'
 
-
-# Sprintly - https://github.com/nextbigsoundinc/Sprintly-GitHub
-alias sp='sprintly'
-# spb = sprintly branch - create a branch automatically based on the bug you're working on
-alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A-Za-z0-9 ]//g' | sed 's/ /-/g' | cut -d"-" -f1,2,3,4,5\`"
 
 alias hpr='hub pull-request'
 alias grb='git recent-branches'
@@ -220,3 +236,11 @@ alias dbmu='spring rake db:migrate:up'
 
 # Homebrew
 alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
+
+# flow
+alias fs='flow-status'
+alias ghgql='flow-github-graphql'
+
+alias be='bundle exec'
+
+alias rbc='rubocop-autocorrect'
