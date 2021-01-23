@@ -11,10 +11,30 @@ function! OpenChangedFiles()
   if len(filenames) > 0
     exec "edit " . filenames[0]
     for filename in filenames[1:]
-      exec "sp " . filename
+      exec "vsp " . filename
     endfor
   end
 endfunction
 command! OpenChangedFiles :call OpenChangedFiles()
 
 nnoremap ,ocf :OpenChangedFiles<CR>
+
+function! OpenDiffAgainstDevelop()
+  only " Close all windows, unless they're modified
+  let filenames = split(system('git diff develop --name-only -- app'), "\n")
+
+  if len(filenames) > 0
+    exec "edit " . filenames[0]
+    for filename in filenames[1:]
+      exec "vsp " . filename
+      exec "sp"
+      exec "A"
+      exec "normal \<c-k>"
+      exec "normal \<c-l>"
+    endfor
+  end
+  exec "normal Q"
+endfunction
+command! OpenDiffAgainstDevelop :call OpenDiffAgainstDevelop()
+
+nnoremap ,od :OpenDiffAgainstDevelop<CR>
