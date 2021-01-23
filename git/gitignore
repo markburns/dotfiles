@@ -47,3 +47,5 @@ Session.vim
 .sass-cache
 bin/production-*
 bin/staging-*
+.base-branch
+config/initializers/byebug_helper.rb
