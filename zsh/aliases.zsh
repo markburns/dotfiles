@@ -21,11 +21,19 @@ alias yip='yadr init-plugins'
 
 # PS
 alias psa="ps aux"
-alias psg="ps aux | grep "
+alias psg="ps aux | grep -v grep | grep "
 alias psr='ps aux | grep ruby'
 
 # Moving around
 alias cdb='cd -'
+alias _cd='cd'
+
+function cd(){
+  builtin cd "$@"
+  rm -f ~/.last-directory
+  echo $(pwd) > ~/.last-directory
+}
+
 alias cls='clear;ls'
 
 # Show human friendly numbers and colors
