@@ -36,5 +36,24 @@ function! OpenDiffAgainstDevelop()
   exec "normal Q"
 endfunction
 command! OpenDiffAgainstDevelop :call OpenDiffAgainstDevelop()
-
 nnoremap ,od :OpenDiffAgainstDevelop<CR>
+
+function! OpenDiffAgainstBranch(...)
+  only " Close all windows, unless they're modified
+  let filenames = split(system('git diff SR-217-choose-to-apply-non-compliance-charges --name-only -- app'), "\n")
+
+  if len(filenames) > 0
+    exec "edit " . filenames[0]
+    for filename in filenames[1:]
+      exec "vsp " . filename
+      exec "sp"
+      exec "A"
+      exec "normal \<c-k>"
+      exec "normal \<c-l>"
+    endfor
+  end
+  exec "normal Q"
+endfunction
+command! OpenDiffAgainstBranch :call OpenDiffAgainstBranch()
+nnoremap ,ob :OpenDiffAgainstBranch<CR>
+
