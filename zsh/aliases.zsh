@@ -90,7 +90,7 @@ alias gcane='git commit --amend --no-edit'
 alias gc="git commit "
 # set in YADR's zsh/prezto/modules/git/alias.zsh
 # overridden by flow/bin/gcm
-unalias gcm || echo ''
+unalias gcm 2> /dev/null
 
 
 alias A1="awk '{print \$1}'"
