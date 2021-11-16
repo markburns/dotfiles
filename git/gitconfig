@@ -137,5 +137,5 @@
 
 [pager]
   diff = diff-highlight | less -FRXsu --tabs=4
-[creential]
-	username = markburns
+[pull]
+	rebase = true
