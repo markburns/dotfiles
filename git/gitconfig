@@ -119,11 +119,23 @@
 [diff]
   # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
   # instead of a/b/c/d as prefixes for patches
-  mnemonicprefix = true
+  # mnemonicprefix = true
 	algorithm = patience
+	tool = vimdiff
 [rerere]
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = true
 [include]
   path = .gitconfig.user
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+
+[pager]
+  diff = diff-highlight | less -FRXsu --tabs=4
+[creential]
+	username = markburns
