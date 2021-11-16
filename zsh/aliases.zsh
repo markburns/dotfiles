@@ -78,8 +78,7 @@ alias ze='vim ~/.zshrc'
 
 # Git Aliases
 alias gs='git status'
-alias gstsh='git stash'
-alias gst='git stash'
+alias gst='git status'
 alias gsp='git stash pop'
 alias gsa='git stash apply'
 alias gsh='git show'
@@ -92,6 +91,7 @@ alias gc="git commit "
 # overridden by flow/bin/gcm
 unalias gcm 2> /dev/null
 
+alias tm='tmate -f ~/.yadr/tmux/tmux.conf'
 
 alias A1="awk '{print \$1}'"
 alias A2="awk '{print \$2}'"
@@ -140,7 +140,7 @@ alias gpub='grb publish'
 alias gtr='grb track'
 alias gpl='git pull --rebase'
 alias gplr='git pull --rebase'
-alias gps='git push --force-with-lease || git push --set-upstream origin $(current-branch) --force-with-lease'
+alias gps='pronto run && git push --force-with-lease || git push --set-upstream origin $(current-branch) --force-with-lease'
 alias gpsh='git push -u origin `git rev-parse --abbrev-ref HEAD`'
 alias gnb='git nb' # new branch aka checkout -b
 alias grs='git reset'
@@ -212,6 +212,7 @@ alias zzz='rm .zeus.sock; pkill zeus; zeus start'
 # Rspec
 alias rs='rspec spec'
 alias sr='spring rspec'
+
 alias src='spring rails c'
 alias srgm='spring rails g migration'
 alias srdm='spring rake db:migrate'
@@ -244,3 +245,7 @@ alias ghgql='flow-github-graphql'
 alias be='bundle exec'
 
 alias rbc='rubocop-autocorrect'
+
+function cheat(){
+  curl cheat.sh/$1
+}
