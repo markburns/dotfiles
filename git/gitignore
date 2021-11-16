@@ -45,6 +45,7 @@ Session.vim
 # SASS
 # ----------------------------------------------------------------------------------------------
 .sass-cache
+<<<<<<< HEAD
 bin/production-*
 bin/staging-*
 .base-branch
