@@ -141,6 +141,7 @@ alias gtr='grb track'
 alias gpl='git pull --rebase'
 alias gplr='git pull --rebase'
 alias gps='pronto run && git push --force-with-lease || git push --set-upstream origin $(current-branch) --force-with-lease'
+alias gpsnv='git push --no-verify --force-with-lease || git push --no-verify --set-upstream origin $(current-branch) --force-with-lease'
 alias gpsh='git push -u origin `git rev-parse --abbrev-ref HEAD`'
 alias gnb='git nb' # new branch aka checkout -b
 alias grs='git reset'
@@ -248,4 +249,13 @@ alias rbc='rubocop-autocorrect'
 
 function cheat(){
   curl cheat.sh/$1
+}
+
+function tm(){
+  cd ~/SilkFred
+  tmux
+  tmux split-pane Vim
+  vim
+
+
 }
