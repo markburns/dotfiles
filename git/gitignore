@@ -45,10 +45,6 @@ Session.vim
 # SASS
 # ----------------------------------------------------------------------------------------------
 .sass-cache
-<<<<<<< HEAD
-bin/production-*
-bin/staging-*
 .base-branch
 config/initializers/byebug_helper.rb
-app/controllers/admin/dev_controller.rb
 notes.md
