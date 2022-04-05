@@ -139,3 +139,5 @@
 # diff = diff-highlight | less -FRXsu --tabs=4
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
