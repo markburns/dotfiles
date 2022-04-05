@@ -135,7 +135,7 @@
   newNormal = green bold
   newHighlight = green bold 22
 
-[pager]
-  diff = diff-highlight | less -FRXsu --tabs=4
+#[pager]
+# diff = diff-highlight | less -FRXsu --tabs=4
 [pull]
 	rebase = true
