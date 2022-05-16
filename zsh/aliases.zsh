@@ -140,8 +140,39 @@ alias gpub='grb publish'
 alias gtr='grb track'
 alias gpl='git pull --rebase'
 alias gplr='git pull --rebase'
-alias gps='pronto run && git push --force-with-lease || git push --set-upstream origin $(current-branch) --force-with-lease'
-alias gpsnv='git push --no-verify --force-with-lease || git push --no-verify --set-upstream origin $(current-branch) --force-with-lease'
+
+function pron(){
+ bundle exec pronto run -f text -c origin/develop --exit-code
+}
+
+function gps {
+  if [ $(current-branch) = develop ]; then;
+    echo 'refusing to push to develop';
+    return;
+  fi;
+
+  if [ $(current-branch) = master ]; then;
+    echo 'refusing to push to master'
+    return;
+  fi;
+
+  pron && gpsnv
+}
+
+function gpsnv {
+  if [ $(current-branch) = develop ]; then;
+    echo 'refusing to push to develop';
+    return;
+  fi;
+
+  if [ $(current-branch) = master ]; then;
+    echo 'refusing to push to master'
+    return;
+  fi;
+
+  git push --no-verify --force-with-lease || git push --no-verify --set-upstream origin $(current-branch) --force-with-lease
+}
+
 alias gpsh='git push -u origin `git rev-parse --abbrev-ref HEAD`'
 alias gnb='git nb' # new branch aka checkout -b
 alias grs='git reset'
